@@ -30,7 +30,6 @@ const ScrollableContainer = ({ children }) => {
           scrollbarWidth: "thin",
           position: "relative",
           display: "flex",
-          marginTop: "30px", // Give space for buttons
         }}
       >
         {children}

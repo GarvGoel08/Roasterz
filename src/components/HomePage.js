@@ -10,6 +10,8 @@ const HomePage = () => {
   const [Loading, SetLoading] = useState(true);
   const [DealItems, setDealItems] = useState([]);
   const [marvelItems, setMarvelItems] = useState([]);
+  const [inspiratItems, setinspiratItems] = useState([]);
+  const [sportsItems, setSportsItems] = useState([]);
   const [OriginalItems, setOriginalItems] = useState([]);
   const baseURL = "https://roasterz-backend.vercel.app/";
   console.log(baseURL);
@@ -58,7 +60,18 @@ const HomePage = () => {
         );
         setMarvelItems(
           jsonData.filter(
-            (item) => item.type === "Marvel"
+            (item) => item.type === "Superhero"
+          )
+        );
+        
+        setSportsItems(
+          jsonData.filter(
+            (item) => item.type === "Sports"
+          )
+        );
+        setinspiratItems(
+          jsonData.filter(
+            (item) => item.type === "Inspirational"
           )
         );
         SetLoading(false);
@@ -111,19 +124,32 @@ const HomePage = () => {
             ))}
           </ScrollableContainer>
         </div>
-        <div className="FeaturedDiv"style={{paddingBottom: '40px'}}> 
+        <div className="FeaturedDiv">
           <div className="d-flex">
             <rect />
-            <div className="FeaturedDivText">Categories:</div>
+            <div className="FeaturedDivText">Featured Items:</div>
           </div>
           <div className="FeaturedDivSubText">
-            <b>Browse Top Categories</b>
+            <b>Browse Our Inspirational Posters Collection</b>
           </div>
           <ScrollableContainer>
-            {Categories.map((item) => (
-              <CategoryBox key={item.id} JSON={item} />
+            {inspiratItems.map((item, index) => (
+              <ItemBox key={index} JSON={item} />
             ))}
-            
+          </ScrollableContainer>
+        </div>
+        <div className="FeaturedDiv">
+          <div className="d-flex">
+            <rect />
+            <div className="FeaturedDivText">Featured Items:</div>
+          </div>
+          <div className="FeaturedDivSubText">
+            <b>Browse Our Sports Collection</b>
+          </div>
+          <ScrollableContainer>
+            {sportsItems.map((item, index) => (
+              <ItemBox key={index} JSON={item} />
+            ))}
           </ScrollableContainer>
         </div>
       </div>

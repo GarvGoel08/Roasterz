@@ -1,4 +1,4 @@
-# ItemZilla
+# Roasterz
 
 ## [V1.4]
 -Added Accounts Page <br>
@@ -22,4 +22,4 @@
 -Added Loading on images
 
 ## [V1]
--Launched ItemZilla with Test Payment
+-Launched with Test Payment

@@ -35,7 +35,7 @@ export default function CartItem(props) {
         style={{ alignItems: "center", overflow: "hidden", textWrap: "nowrap", padding: '0' }}
       >
         <img
-          src={`https://firebasestorage.googleapis.com/v0/b/ecommerce-95870.appspot.com/o/${DataJSON?.image}?alt=media&token=15e82622-c526-49ce-8086-a1679de0adf6`}
+          src={`https://firebasestorage.googleapis.com/v0/b/roasterz-b826f.appspot.com/o/${DataJSON?.image}?alt=media&token=15e82622-c526-49ce-8086-a1679de0adf6`}
           style={{ maxWidth: "100%"}}
         ></img>
       </div>

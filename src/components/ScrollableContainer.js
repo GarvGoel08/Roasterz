@@ -4,23 +4,35 @@ import { useEffect } from "react";
 const ScrollableContainer = ({ children }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const itemListRef = useRef(null);
-  // Use Effect to check scroll position and update buttons collapsed
 
   useEffect(() => {
-    const container = itemListRef.current;
-    if (container) {
-      container.addEventListener("scroll", () => {
-        setScrollPosition(container.scrollLeft);
-      });
+    if (
+      scrollPosition <
+      itemListRef.current?.scrollWidth - itemListRef.current?.clientWidth
+    ) {
+      document
+        .querySelector(".scroll-button.right")
+        .classList.remove("Collapsed");
     }
-    return () => {
-      if (container) {
-        container.removeEventListener("scroll", () => {
-          setScrollPosition(container.scrollLeft);
-        });
-      }
-    };
-  }, []);
+    if (scrollPosition > 0) {
+      document
+        .querySelector(".scroll-button.left")
+        .classList.remove("Collapsed");
+    }
+    if (scrollPosition === 0) {
+      document.querySelector(".scroll-button.left").classList.add("Collapsed");
+    }
+    if (
+      scrollPosition ===
+      itemListRef.current?.scrollWidth - itemListRef.current?.clientWidth
+    ) {
+      document.querySelector(".scroll-button.right").classList.add("Collapsed");
+    }
+  }, [
+    scrollPosition,
+    itemListRef.current?.clientWidth,
+    itemListRef.current?.scrollWidth,
+  ]);
 
   const handleScroll = (direction) => {
     const scrollAmount = 160;

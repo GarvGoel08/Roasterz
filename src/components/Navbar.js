@@ -192,7 +192,7 @@ export default function Navbar() {
             </ul>
           </nav>
           <form className="d-flex" role="search">
-            <input
+            {/* <input
               className="form-control me-2"
               style={{ fontSize: "14px", height: "30px" }}
               type="search"
@@ -219,7 +219,7 @@ export default function Navbar() {
               >
                 search
               </span>
-            </button>
+            </button> */}
             <Link
               to="/Cart"
               className="NavbarButtons"

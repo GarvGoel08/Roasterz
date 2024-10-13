@@ -64,6 +64,7 @@ export default function ItemBox(props) {
             src={`https://firebasestorage.googleapis.com/v0/b/roasterz-b826f.appspot.com/o/${ITEMJson.image}?alt=media&token=15e82622-c526-49ce-8086-a1679de0adf6`}
             alt={`Product image ${imageLoaded ? "" : "collapsed"}`}
             onLoad={handleImageLoad}
+            loading="lazy"
           />
           <button className="add-to-cart"
           id={`AddToCart${ITEMJson._id}`}

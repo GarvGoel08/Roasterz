@@ -35,7 +35,7 @@ export default function OrderPage() {
   }, []);
 
   return (
-    <div className="OrderPageDiv">
+    <div className="OrderPageDiv flex-grow">
       <div className="d-flex" style={{marginTop: '24px'}}>
         <rect className="rectRed" />
         <div className="FeaturedDivText">Your Account:</div>

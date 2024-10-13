@@ -14,6 +14,7 @@ import OTP from "./components/OTP";
 import OrderPage from "./components/OrderPage";
 import AccountInfo from "./components/AccountInfo";
 import EditName from "./components/EditName";
+import Footer from "./components/Footer";
 
 function App() {
   const [notificationTitle, SetNotificationTitle] = useState("");
@@ -77,6 +78,7 @@ function App() {
             element={<EditName ShowNotif={useNotification} />}
           />
         </Routes>
+        <Footer/>
         <div id="notification" className={`notification-container ${notificationTitle === "Error:"?("NotifError"):("")} ${notificationTitle === ""?("Collapsed"):("")}`} >
           <div className="notification-title">{notificationTitle}</div>
           <div className="notification-description">{notificationDesc}</div>

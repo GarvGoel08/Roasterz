@@ -26,7 +26,7 @@ export default function AccountInfo() {
     }
   }, [authtoken]);
   return (
-    <div className="AccountInfoDiv">
+    <div className="AccountInfoDiv flex-grow">
       <div className="d-flex" style={{ marginTop: "24px" }}>
         <rect className="rectRed" />
         <div className="FeaturedDivText">Your Account:</div>

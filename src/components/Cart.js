@@ -97,7 +97,7 @@ export default function Cart(props) {
 
   return (
     <>
-      <div className="CartDiv row row-ow">
+      <div className="CartDiv row row-ow flex-grow">
         <div className="col-3 CartHeadings">
           <b>Product</b>
         </div>
@@ -122,15 +122,7 @@ export default function Cart(props) {
           />
         ))}
       </div>
-      <div className="row row-ow CartProceed">
-        <div className="col-6 d-flex">
-          <input
-            className="form-control me-2 flex-grow-1"
-            style={{ fontSize: "14px", height: "36px" }}
-            placeholder="Coupon Code"
-          />
-          <button className="CouponButton">Apply Coupon</button>
-        </div>
+      <div className="row row-ow flexSp CartProceed">
         <div className="col-6 TotalPriceDiv" style={{ marginBottom: "12px" }}>
           <div className="TotalPriceSubDiv">
             <label className="CartTotalTxt">

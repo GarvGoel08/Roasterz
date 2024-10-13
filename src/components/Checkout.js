@@ -13,6 +13,8 @@ export default function Checkout(props) {
   const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [addressName, setAddressName] = useState("");
+  const [couponCode, setCouponCode] = useState("");
+  const [couponDiscount, setCouponDiscount] = useState(0);
   const [streetAddress, setStreetAddress] = useState("");
   const [apartment, setApartment] = useState("");
   const [town, setTown] = useState("Delhi");
@@ -20,7 +22,7 @@ export default function Checkout(props) {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-  if (!authtoken){
+  if (!authtoken) {
     ShowNotif("Error:", "Please SignUp before checkout.");
     navigate("/Login");
   }
@@ -176,6 +178,31 @@ export default function Checkout(props) {
     }
   };
 
+  const handleCouponApply = async () => {
+    try {
+      const response = await fetch(
+        `${baseURL}api/coupons/GetCoupon/${couponCode}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": authtoken,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        ShowNotif("Coupon Applied:", "Coupon applied successfully");
+        const data = await response.json();
+        setCouponDiscount((data.couponDiscount * subtotal) / 100);
+        return data;
+      } else {
+        console.error("Error applying coupon:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error applying coupon:", error);
+    }
+  };
   const handlePlaceOrder = async () => {
     const errors = validateAddressFields();
 
@@ -184,8 +211,11 @@ export default function Checkout(props) {
       return;
     }
     const AddressJSON = await saveAddress();
-    if (selectedPaymentMethod === "razorpay") { 
-      ShowNotif("Payment Method:", "Razorpay payment method will be available soon");
+    if (selectedPaymentMethod === "razorpay") {
+      ShowNotif(
+        "Payment Method:",
+        "Razorpay payment method will be available soon"
+      );
       return;
     }
     document.querySelector(".PlaceOrderButton").disabled = true;
@@ -193,6 +223,7 @@ export default function Checkout(props) {
       items: cart,
       addressId: AddressJSON._id,
       paymentMethod: selectedPaymentMethod,
+      couponCode: couponCode,
     });
     fetch(`${baseURL}api/orders/create-order`, {
       method: "POST",
@@ -258,7 +289,7 @@ export default function Checkout(props) {
   };
 
   return (
-    <div className="row row-ow CheckOutDiv">
+    <div className="row row-ow CheckOutDiv flex-grow">
       <div className="col-7 CheckOutDivHeader checkout-100">
         <b>Billing Details</b>
         <div className="inputs">
@@ -329,11 +360,19 @@ export default function Checkout(props) {
               <label className="mx-2">Free</label>
             </div>
             <div className="TotalDivv1 d-flex">
+              <label className="flex-grow-1 mx-2">Coupon Discount:</label>
+              <label className="mx-2">{`-₹‎${couponDiscount.toFixed(
+                2
+              )}`}</label>
+            </div>
+            <div className="TotalDivv1 d-flex">
               <label className="flex-grow-1 mx-2">Total:</label>
-              <label className="mx-2">{`₹‎${subtotal.toFixed(2)}`}</label>
+              <label className="mx-2">{`₹‎${
+                subtotal.toFixed(2) - couponDiscount.toFixed(2)
+              }`}</label>
             </div>
 
-            <div className="mb-3" style={{marginTop: '18px'}}>
+            <div className="mb-3" style={{ marginTop: "18px" }}>
               <label htmlFor="addressSelect" className="form-label">
                 Select Address
               </label>
@@ -358,7 +397,22 @@ export default function Checkout(props) {
               </select>
             </div>
 
-            <div style={{marginTop: '18px'}}>
+            <div
+              className="d-flex"
+              style={{ marginTop: "30px", marginBottom: "30px" }}
+            >
+              <input
+                className="form-control me-2 flex-grow-1"
+                style={{ fontSize: "14px", height: "36px" }}
+                placeholder="Coupon Code"
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+              />
+              <button className="CouponButton" onClick={handleCouponApply}>
+                Apply Coupon
+              </button>
+            </div>
+            <div style={{ marginTop: "18px" }}>
               <div className="form-check form-m">
                 <input
                   className="form-check-input"
@@ -384,7 +438,7 @@ export default function Checkout(props) {
                   onChange={handlePaymentMethodChange}
                   disabled={true}
                 />
-                <label  className="form-check-label" htmlFor="razorpay">
+                <label className="form-check-label" htmlFor="razorpay">
                   Pay Online (Razorpay) -- Coming Soon
                 </label>
               </div>

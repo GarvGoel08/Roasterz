@@ -28,7 +28,7 @@ export default function CategoryFilter() {
   }, []);
   return (
     <>
-      <div className="FeaturedDiv">
+      <div className="FeaturedDiv flex-grow">
         <div className="d-flex">
           <rect />
           <div className="FeaturedDivText">{categoryName}:</div>

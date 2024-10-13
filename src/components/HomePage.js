@@ -86,7 +86,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div>
+      <div className="flex-grow">
         <div
           className={`spinner-border text-danger ${Loading ? "" : "Collapsed"}`}
           style={{ position: "fixed", top: "50%", right: "50%" }}

@@ -92,7 +92,7 @@ export default function Navbar() {
       <div>
         <nav className="NavBarMain d-flex">
           <h1>Roasterz</h1>
-          <nav style={{ padding: "0 0px 0 176px" }}>
+          <nav >
             <ul>
               <li className={`${pathname === "/" ? "selected" : ""}`}>
                 <Link to="/">Home</Link>

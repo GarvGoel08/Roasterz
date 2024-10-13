@@ -6,7 +6,7 @@ export default function Checkout(props) {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || []
   );
-  const baseURL = "http://localhost:5000/";
+  const baseURL = "https://roasterz-backend.vercel.app/";
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("cod");
   const authtoken = localStorage.getItem("roasterz-auth-token");
   const [subtotal, setSubtotal] = useState(0);

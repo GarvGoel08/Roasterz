@@ -857,3 +857,29 @@ nav .selected a::after {
   background: white;
   display: inline-block;
 }
+.footer {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  margin-top: 18px;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding-inline: 20px;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 1rem;
+  margin: 6px 0px;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+}
+
+.icon {
+  height: 1.25rem;
+}

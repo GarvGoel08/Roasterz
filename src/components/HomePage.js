@@ -110,7 +110,7 @@ const HomePage = () => {
             ))}
           </ScrollableContainer>
         </div>
-        <div className="FeaturedDiv">
+        <div className="FeaturedDiv"> 
           <div className="d-flex">
             <rect />
             <div className="FeaturedDivText">Featured Items:</div>
@@ -138,7 +138,7 @@ const HomePage = () => {
             ))}
           </ScrollableContainer>
         </div>
-        <div className="FeaturedDiv">
+        <div className="FeaturedDiv" style={{paddingBottom: '28px'}}>
           <div className="d-flex">
             <rect />
             <div className="FeaturedDivText">Featured Items:</div>

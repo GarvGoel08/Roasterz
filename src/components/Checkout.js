@@ -6,7 +6,7 @@ export default function Checkout(props) {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || []
   );
-  const baseURL = "https://roasterz-backend.vercel.app/";
+  const baseURL = "http://localhost:5000/";
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("cod");
   const authtoken = localStorage.getItem("roasterz-auth-token");
   const [subtotal, setSubtotal] = useState(0);
@@ -184,7 +184,11 @@ export default function Checkout(props) {
       return;
     }
     const AddressJSON = await saveAddress();
-
+    if (selectedPaymentMethod === "razorpay") { 
+      ShowNotif("Payment Method:", "Razorpay payment method will be available soon");
+      return;
+    }
+    document.querySelector(".PlaceOrderButton").disabled = true;
     const dataaaa = JSON.stringify({
       items: cart,
       addressId: AddressJSON._id,

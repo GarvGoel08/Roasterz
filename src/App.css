@@ -896,3 +896,13 @@ nav .selected a::after {
 .icon {
   height: 1.25rem;
 }
+
+@media (max-width: 1050px) {
+  nav li{
+    margin: 8px 0!important;
+  }
+  .NavbarButtons{
+    margin-bottom: 8px;
+    margin-left: 0!important;
+  }
+}

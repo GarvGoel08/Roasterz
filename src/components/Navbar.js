@@ -87,7 +87,7 @@ export default function Navbar() {
   return (
     <div>
       <div className="TopSaleBar">
-        Opening Sale! 60% OFF on all items
+        Opening Sale! 50% OFF on all items
       </div>
       <div>
         <nav className="NavBarMain d-flex">

@@ -3,7 +3,6 @@ import ItemBox from "./ItemBox";
 import CategoryBox from "./CategoryBox";
 import ScrollableContainer from "./ScrollableContainer";
 
-
 const HomePage = () => {
   const [Items, setItems] = useState([]);
   const [Categories, setCategories] = useState([]);
@@ -53,33 +52,24 @@ const HomePage = () => {
         const jsonData = await response.json();
         console.log(jsonData);
         setItems(jsonData);
-        setDealItems(jsonData.filter((item) => item.discount >= 20));
+        // sEt deal items with discount > 10% and shuffle thmem
+        setDealItems(
+          jsonData
+            .filter((item) => item.Discount > 10)
+            .sort(() => Math.random() - 0.5)
+        );
         setOriginalItems(
           jsonData.filter(
             (item) => item.Seller.ID === "670a407393ae7aeeeaf8979d"
           )
         );
-        setMarvelItems(
-          jsonData.filter(
-            (item) => item.type === "Superhero"
-          )
-        );
+        setMarvelItems(jsonData.filter((item) => item.type === "Superhero"));
 
-        setAnimeItems(
-          jsonData.filter(
-            (item) => item.type === "Anime"
-          )
-        );
-        
-        setSportsItems(
-          jsonData.filter(
-            (item) => item.type === "Sports"
-          )
-        );
+        setAnimeItems(jsonData.filter((item) => item.type === "Anime"));
+
+        setSportsItems(jsonData.filter((item) => item.type === "Sports"));
         setinspiratItems(
-          jsonData.filter(
-            (item) => item.type === "Inspirational"
-          )
+          jsonData.filter((item) => item.type === "Inspirational")
         );
         SetLoading(false);
       } catch (error) {
@@ -117,7 +107,7 @@ const HomePage = () => {
             ))}
           </ScrollableContainer>
         </div>
-        <div className="FeaturedDiv"> 
+        <div className="FeaturedDiv">
           <div className="d-flex">
             <rect />
             <div className="FeaturedDivText">Featured Items:</div>
@@ -131,7 +121,7 @@ const HomePage = () => {
             ))}
           </ScrollableContainer>
         </div>
-        <div className="FeaturedDiv"> 
+        <div className="FeaturedDiv">
           <div className="d-flex">
             <rect />
             <div className="FeaturedDivText">Featured Items:</div>
@@ -159,7 +149,7 @@ const HomePage = () => {
             ))}
           </ScrollableContainer>
         </div>
-        <div className="FeaturedDiv" style={{paddingBottom: '28px'}}>
+        <div className="FeaturedDiv" style={{ paddingBottom: "28px" }}>
           <div className="d-flex">
             <rect />
             <div className="FeaturedDivText">Featured Items:</div>

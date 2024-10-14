@@ -11,6 +11,7 @@ const HomePage = () => {
   const [DealItems, setDealItems] = useState([]);
   const [marvelItems, setMarvelItems] = useState([]);
   const [inspiratItems, setinspiratItems] = useState([]);
+  const [animeItems, setAnimeItems] = useState([]);
   const [sportsItems, setSportsItems] = useState([]);
   const [OriginalItems, setOriginalItems] = useState([]);
   const baseURL = "https://roasterz-backend.vercel.app/";
@@ -63,6 +64,12 @@ const HomePage = () => {
             (item) => item.type === "Superhero"
           )
         );
+
+        setAnimeItems(
+          jsonData.filter(
+            (item) => item.type === "Anime"
+          )
+        );
         
         setSportsItems(
           jsonData.filter(
@@ -106,6 +113,20 @@ const HomePage = () => {
           </div>
           <ScrollableContainer>
             {DealItems.map((item, index) => (
+              <ItemBox key={index} JSON={item} />
+            ))}
+          </ScrollableContainer>
+        </div>
+        <div className="FeaturedDiv"> 
+          <div className="d-flex">
+            <rect />
+            <div className="FeaturedDivText">Featured Items:</div>
+          </div>
+          <div className="FeaturedDivSubText">
+            <b>Browse Our Anime Collection</b>
+          </div>
+          <ScrollableContainer>
+            {animeItems.map((item, index) => (
               <ItemBox key={index} JSON={item} />
             ))}
           </ScrollableContainer>

@@ -62,13 +62,27 @@ const HomePage = () => {
             (item) => item.Seller.ID === "670a407393ae7aeeeaf8979d"
           )
         );
-        setMarvelItems(jsonData.filter((item) => item.type === "Superhero"));
+        setMarvelItems(
+          jsonData
+            .filter((item) => item.type === "Superhero")
+            .sort(() => Math.random() - 0.5)
+        );
 
-        setAnimeItems(jsonData.filter((item) => item.type === "Anime"));
+        setAnimeItems(
+          jsonData
+            .filter((item) => item.type === "Anime")
+            .sort(() => Math.random() - 0.5)
+        );
 
-        setSportsItems(jsonData.filter((item) => item.type === "Sports"));
+        setSportsItems(
+          jsonData
+            .filter((item) => item.type === "Sports")
+            .sort(() => Math.random() - 0.5)
+        );
         setinspiratItems(
-          jsonData.filter((item) => item.type === "Inspirational")
+          jsonData
+            .filter((item) => item.type === "Inspirational")
+            .sort(() => Math.random() - 0.5)
         );
         SetLoading(false);
       } catch (error) {

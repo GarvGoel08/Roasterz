@@ -54,15 +54,9 @@ export default function ItemBox(props) {
           <a href={`/Item/${ITEMJson._id}`} className="InfoBtnDiv">
             <span className="material-symbols-outlined">info</span>
           </a>
-          {!imageLoaded && (
-            <div
-              className="loading-placeholder"
-              style={{ height: "150px", width: "200px" }}
-            ></div>
-          )}
           <img
             src={`https://firebasestorage.googleapis.com/v0/b/roasterz-b826f.appspot.com/o/${ITEMJson.image}?alt=media&token=15e82622-c526-49ce-8086-a1679de0adf6`}
-            alt={`Product image ${imageLoaded ? "" : "collapsed"}`}
+            alt={`Product pImage image ${imageLoaded ? "" : ""}`}
             onLoad={handleImageLoad}
             loading="lazy"
           />

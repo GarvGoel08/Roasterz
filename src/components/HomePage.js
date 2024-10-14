@@ -52,10 +52,9 @@ const HomePage = () => {
         const jsonData = await response.json();
         console.log(jsonData);
         setItems(jsonData);
-        // sEt deal items with discount > 10% and shuffle thmem
         setDealItems(
           jsonData
-            .filter((item) => item.Discount > 10)
+            .filter((item) => item.discount > 10)
             .sort(() => Math.random() - 0.5)
         );
         setOriginalItems(

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 
 export default function ItemBox(props) {
   const ITEMJson = props.JSON;
-  const [imageLoaded, setImageLoaded] = useState(false);const [cart, setCart] = useState(
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || []
   );
 
@@ -46,7 +47,7 @@ export default function ItemBox(props) {
 
   return (
     <div className="product-card">
-      <div >
+      <div>
         <div>
           {ITEMJson.discount > 0 && (
             <div className="DiscountDiv">-{ITEMJson.discount}%</div>
@@ -54,15 +55,21 @@ export default function ItemBox(props) {
           <a href={`/Item/${ITEMJson._id}`} className="InfoBtnDiv">
             <span className="material-symbols-outlined">info</span>
           </a>
-          <img
-            src={`https://firebasestorage.googleapis.com/v0/b/roasterz-b826f.appspot.com/o/${ITEMJson.image}?alt=media&token=15e82622-c526-49ce-8086-a1679de0adf6`}
-            alt={`Product pImage image ${imageLoaded ? "" : ""}`}
-            onLoad={handleImageLoad}
-            loading="lazy"
-          />
-          <button className="add-to-cart"
-          id={`AddToCart${ITEMJson._id}`}
-          onClick={() => addToCart(ITEMJson)}>Add To Cart</button>
+          <a href={`/Item/${ITEMJson._id}`}>
+            <img
+              src={`https://firebasestorage.googleapis.com/v0/b/roasterz-b826f.appspot.com/o/${ITEMJson.image}?alt=media&token=15e82622-c526-49ce-8086-a1679de0adf6`}
+              alt={`Product pImage image ${imageLoaded ? "" : ""}`}
+              onLoad={handleImageLoad}
+              loading="lazy"
+            />
+          </a>
+          <button
+            className="add-to-cart"
+            id={`AddToCart${ITEMJson._id}`}
+            onClick={() => addToCart(ITEMJson)}
+          >
+            Add To Cart
+          </button>
         </div>
         <div className="product-info">
           <h3 style={{ textWrap: "nowrap", overflow: "hidden" }}>

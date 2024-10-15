@@ -3,7 +3,7 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer className="footer">
-      <p className='footer-text'>© 2024 Flipper</p>
+      <p className='footer-text'>© 2024 Roasterz</p>
         <div className="social-icons">
           {/* HREF Should be mailto */}
             <a href="mailto:Shop.roasterz@gmail.com">
